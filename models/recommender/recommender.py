@@ -21,7 +21,7 @@ doctors['Disease-treated'] = doctors['Disease-treated'].apply(Convert)
 doctors["City"] = doctors["City"].apply(Convert_to_list)
 doctors["Specialization"] = doctors["Specialization"].apply(Convert_to_list)
 doctors["Cost"] = doctors["Cost"].apply(Convert_to_list)
-doctors['Tags'] = + doctors['Specialization'] + doctors['Disease-treated'] + doctors['City'] + doctors['Cost']
+doctors['Tags'] = doctors['Specialization'] + doctors['Disease-treated'] + doctors['City'] + doctors['Cost']
 
 new_df2 = doctors[['Doctor id', 'Doctor Name', 'Specialization', 'Disease-treated', 'City', 'Cost', 'Tags']]
 new_df2['Tags'] = new_df2['Tags'].apply(lambda x: " ".join(x))
@@ -63,4 +63,5 @@ def recommend_doctor(disease):
     res = [new_df2.iloc[i[0]].to_dict() for i in doctor_list]
     for i in doctor_list:
         print(new_df2.iloc[i[0]][1])
+    # print('result: ', res)
     return res
